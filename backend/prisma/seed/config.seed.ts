@@ -20,6 +20,10 @@ const configVariables: ConfigVariables = {
       defaultValue: "http://localhost:3000",
       secret: false,
     },
+    secureCookies: {
+      type: "boolean",
+      defaultValue: "false",
+    },
     showHomePage: {
       type: "boolean",
       defaultValue: "true",
@@ -47,8 +51,13 @@ const configVariables: ConfigVariables = {
       defaultValue: "0",
       secret: false,
     },
-    maxSize: {
+    shareIdLength: {
       type: "number",
+      defaultValue: "8",
+      secret: false,
+    },
+    maxSize: {
+      type: "filesize",
       defaultValue: "1000000000",
       secret: false,
     },
@@ -57,7 +66,7 @@ const configVariables: ConfigVariables = {
       defaultValue: "9",
     },
     chunkSize: {
-      type: "number",
+      type: "filesize",
       defaultValue: "10000000",
       secret: false,
     },
@@ -80,7 +89,7 @@ const configVariables: ConfigVariables = {
     shareRecipientsMessage: {
       type: "text",
       defaultValue:
-        "Hey!\n\n{creator} shared some files with you, view or download the files with this link: {shareUrl}\n\nThe share will expire {expires}.\n\nNote: {desc}\n\nShared securely with Pingvin Share 🐧",
+        "Hey!\n\n{creator} ({creatorEmail}) shared some files with you, view or download the files with this link: {shareUrl}\n\nThe share will expire {expires}.\n\nNote: {desc}\n\nShared securely with Pingvin Share 🐧",
     },
     reverseShareSubject: {
       type: "string",
@@ -279,6 +288,10 @@ const configVariables: ConfigVariables = {
       type: "boolean",
       defaultValue: "false",
     },
+    "oidc-scope": {
+      type: "string",
+      defaultValue: "openid email profile",
+    },
     "oidc-usernameClaim": {
       type: "string",
       defaultValue: "",
@@ -305,6 +318,38 @@ const configVariables: ConfigVariables = {
       obscured: true,
     },
   },
+  s3: {
+    enabled: {
+      type: "boolean",
+      defaultValue: "false",
+    },
+    endpoint: {
+      type: "string",
+      defaultValue: "",
+    },
+    region: {
+      type: "string",
+      defaultValue: "",
+    },
+    bucketName: {
+      type: "string",
+      defaultValue: "",
+    },
+    bucketPath: {
+      type: "string",
+      defaultValue: "",
+    },
+    key: {
+      type: "string",
+      defaultValue: "",
+      secret: true,
+    },
+    secret: {
+      type: "string",
+      defaultValue: "",
+      obscured: true,
+    },
+  }
 };
 
 type ConfigVariables = {

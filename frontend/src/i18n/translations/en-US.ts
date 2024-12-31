@@ -158,6 +158,9 @@ export default {
   "account.shares.table.expiresAt": "Expires on",
   "account.shares.table.createdAt": "Created on",
   "account.shares.table.size": "Size",
+  "account.shares.table.password-protected": "Password protected",
+  "account.shares.table.visitor-count": "{count} of {max}",
+  "account.shares.table.expiry-never": "Never",
 
   "account.shares.modal.share-informations": "Share informations",
   "account.shares.modal.share-link": "Share link",
@@ -286,9 +289,14 @@ export default {
   // /upload
   "upload.title": "Upload",
 
+  "upload.notify.confirm-leave":
+    "Are you sure you want to leave this page? Your upload will be canceled.",
   "upload.notify.generic-error":
     "An error occurred while finishing your share.",
   "upload.notify.count-failed": "{count} files failed to upload. Trying again.",
+  "upload.reverse-share.error.invalid.title": "Invalid reverse share link",
+  "upload.reverse-share.error.invalid.description":
+    "This reverse share has expired or is invalid.",
 
   // Dropzone.tsx
   "upload.dropzone.title": "Upload files",
@@ -410,6 +418,9 @@ export default {
   "admin.config.general.app-url": "App URL",
   "admin.config.general.app-url.description":
     "On which URL Pingvin Share is available",
+  "admin.config.general.secure-cookies": "Secure cookies",
+  "admin.config.general.secure-cookies.description":
+    "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
   "admin.config.general.show-home-page": "Show home page",
   "admin.config.general.show-home-page.description":
     "Whether to show the home page",
@@ -430,7 +441,7 @@ export default {
     "Subject of the email which gets sent to the share recipients.",
   "admin.config.email.share-recipients-message": "Share recipients message",
   "admin.config.email.share-recipients-message.description":
-    "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n These variables will be replaced with the actual value.",
+    "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {creatorEmail} - The email of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n These variables will be replaced with the actual value.",
   "admin.config.email.reverse-share-subject": "Reverse share subject",
   "admin.config.email.reverse-share-subject.description":
     "Subject of the sent email when someone created a share with your reverse share link.",
@@ -460,14 +471,17 @@ export default {
   "admin.config.share.max-expiration": "Max expiration",
   "admin.config.share.max-expiration.description":
     "Maximum share expiration in hours. Set to 0 to allow unlimited expiration.",
+  "admin.config.share.share-id-length": "Default share ID length",
+  "admin.config.share.share-id-length.description":
+    "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
   "admin.config.share.max-size": "Max size",
-  "admin.config.share.max-size.description": "Maximum share size in bytes",
+  "admin.config.share.max-size.description": "Maximum share size",
   "admin.config.share.zip-compression-level": "Zip compression level",
   "admin.config.share.zip-compression-level.description":
     "Adjust the level to balance between file size and compression speed. Valid values range from 0 to 9, with 0 being no compression and 9 being maximum compression. ",
   "admin.config.share.chunk-size": "Chunk size",
   "admin.config.share.chunk-size.description":
-    "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks make uploads faster for stable connections.",
+    "Adjust the chunk size for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks make uploads faster for stable connections.",
   "admin.config.share.auto-open-share-modal": "Auto open create share modal",
   "admin.config.share.auto-open-share-modal.description":
     "The share creation modal automatically appears when a user selects files, eliminating the need to manually click the button.",
@@ -555,6 +569,9 @@ export default {
   "admin.config.oauth.oidc-sign-out": "Sign out from OpenID Connect",
   "admin.config.oauth.oidc-sign-out.description":
     "Whether the “Sign out” button will sign out from the OpenID Connect provider",
+  "admin.config.oauth.oidc-scope": "OpenID Connect scope",
+  "admin.config.oauth.oidc-scope.description":
+    "Scopes which should be requested from the OpenID Connect provider.",
   "admin.config.oauth.oidc-username-claim": "OpenID Connect username claim",
   "admin.config.oauth.oidc-username-claim.description":
     "Username claim in OpenID Connect ID token. Leave it blank if you don't know what this config is.",
@@ -607,6 +624,26 @@ export default {
   "admin.config.ldap.field-name-email": "User email attribute name",
   "admin.config.ldap.field-name-email.description":
     "LDAP attribute name for the email of an user.",
+  "admin.config.notify.success": "Configuration updated successfully.",
+  "admin.config.notify.logo-success":
+    "Logo updated successfully. It may take a few minutes to update on the website.",
+  "admin.config.notify.no-changes": "No changes to save.",
+
+  "admin.config.category.s3": "S3",
+  "admin.config.s3.enabled": "Enabled",
+  "admin.config.s3.enabled.description": "Whether S3 should be used to store the shared files instead of the local file system.",
+  "admin.config.s3.endpoint": "Endpoint",
+  "admin.config.s3.endpoint.description": "The URL of the S3 bucket.",
+  "admin.config.s3.region": "Region",
+  "admin.config.s3.region.description": "The region of the S3 bucket.",
+  "admin.config.s3.bucket-name": "Bucket name",
+  "admin.config.s3.bucket-name.description": "The name of the S3 bucket.",
+  "admin.config.s3.bucket-path": "Path",
+  "admin.config.s3.bucket-path.description": "The default path which should be used to store the files in the S3 bucket.",
+  "admin.config.s3.key": "Key",
+  "admin.config.s3.key.description": "The key which allows you to access the S3 bucket.",
+  "admin.config.s3.secret": "Secret",
+  "admin.config.s3.secret.description": "The secret which allows you to access the S3 bucket.",
 
   // 404
   "404.description": "Oops this page doesn't exist.",
@@ -657,6 +694,7 @@ export default {
   "common.button.go-back": "Go back",
   "common.button.go-home": "Go home",
   "common.notify.copied": "Your link was copied to the clipboard",
+  "common.notify.copied-link": "Your link was copied to the clipboard",
   "common.success": "Success",
 
   "common.error": "Error",

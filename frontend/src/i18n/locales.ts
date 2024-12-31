@@ -1,4 +1,5 @@
 import arabic from "./translations/ar-EG";
+import czech from "./translations/cs-CZ";
 import danish from "./translations/da-DK";
 import german from "./translations/de-DE";
 import greek from "./translations/el-GR";
@@ -6,6 +7,7 @@ import english from "./translations/en-US";
 import spanish from "./translations/es-ES";
 import finnish from "./translations/fi-FI";
 import french from "./translations/fr-FR";
+import croatian from "./translations/hr-HR";
 import hungarian from "./translations/hu-HU";
 import italian from "./translations/it-IT";
 import japanese from "./translations/ja-JP";
@@ -15,17 +17,15 @@ import polish from "./translations/pl-PL";
 import portuguese from "./translations/pt-BR";
 import russian from "./translations/ru-RU";
 import slovenian from "./translations/sl-SI";
-import serbian from "./translations/sr-SP";
+import serbianLatin from "./translations/sr-CS";
+import serbianCyrillic from "./translations/sr-SP";
 import swedish from "./translations/sv-SE";
 import thai from "./translations/th-TH";
+import turkish from "./translations/tr-TR";
 import ukrainian from "./translations/uk-UA";
+import viatnamese from "./translations/vi-VN";
 import chineseSimplified from "./translations/zh-CN";
 import chineseTraditional from "./translations/zh-TW";
-import turkish from "./translations/tr-TR";
-import czech from "./translations/cs-CZ";
-import viatnamese from "./translations/vi-VN";
-import bulgarian from "./translations/bg-BG";
-import serbianCyrillic from "./translations/sr-CS";
 
 export const LOCALES = {
   ENGLISH: {
@@ -89,9 +89,14 @@ export const LOCALES = {
     messages: thai,
   },
   SERBIAN: {
-    name: "Srpski",
+    name: "Српски",
     code: "sr-SP",
-    messages: serbian,
+    messages: serbianCyrillic,
+  },
+  SERBIAN_LATIN: {
+    name: "Srpski",
+    code: "sr-CS",
+    messages: serbianLatin,
   },
   DUTCH: {
     name: "Nederlands",
@@ -158,14 +163,9 @@ export const LOCALES = {
     code: "vi-VN",
     messages: viatnamese,
   },
-  BULGARIAN: {
-    name: "Български",
-    code: "bg-BG",
-    messages: bulgarian,
-  },
-  SERBIAN_CYRILLIC: {
-    name: "Српски",
-    code: "sr-CS",
-    messages: serbianCyrillic,
+  CROATIAN: {
+    name: "Hrvatski",
+    code: "hr-HR",
+    messages: croatian,
   },
 };
